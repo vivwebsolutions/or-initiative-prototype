@@ -26,7 +26,7 @@ export function LoginModal() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/50 px-4"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/50 px-4"
       onClick={closeLogin}
     >
       <div
