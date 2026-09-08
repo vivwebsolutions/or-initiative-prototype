@@ -19,6 +19,40 @@ export default async function ToolDetailPage({
   if (!tool) notFound();
 
   const arc = ARCS[tool.arc];
+  const isOpenGating = tool.gatingStyle === "open";
+
+  const lessonContent = (
+    <>
+      <section>
+        <h2 className="mb-2 text-lg font-semibold text-stone-900">Tool overview</h2>
+        {tool.overview.split("\n\n").map((paragraph, i) => (
+          <p key={i} className="mb-3 text-stone-700 last:mb-0">
+            {paragraph}
+          </p>
+        ))}
+      </section>
+
+      {tool.competencies && (
+        <section>
+          <h2 className="mb-2 text-lg font-semibold text-stone-900">
+            Students will practice…
+          </h2>
+          <ul className="list-disc space-y-1.5 pl-5 text-stone-700">
+            {tool.competencies.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="rounded-lg border border-teal-100 bg-teal-50 p-4">
+        <h2 className="mb-1 text-sm font-semibold tracking-wide text-teal-800 uppercase">
+          Grounded in interviews
+        </h2>
+        <p className="text-sm text-teal-900">{tool.groundedInInterviews}</p>
+      </section>
+    </>
+  );
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -57,41 +91,16 @@ export default async function ToolDetailPage({
         </div>
       </dl>
 
-      <SignInGate>
-        <div className="mt-8 space-y-8">
-          <section>
-            <h2 className="mb-2 text-lg font-semibold text-stone-900">Tool overview</h2>
-            {tool.overview.split("\n\n").map((paragraph, i) => (
-              <p key={i} className="mb-3 text-stone-700 last:mb-0">
-                {paragraph}
-              </p>
-            ))}
-          </section>
-
-          {tool.competencies && (
-            <section>
-              <h2 className="mb-2 text-lg font-semibold text-stone-900">
-                Students will practice…
-              </h2>
-              <ul className="list-disc space-y-1.5 pl-5 text-stone-700">
-                {tool.competencies.map((c) => (
-                  <li key={c}>{c}</li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          <section className="rounded-lg border border-teal-100 bg-teal-50 p-4">
-            <h2 className="mb-1 text-sm font-semibold tracking-wide text-teal-800 uppercase">
-              Grounded in interviews
-            </h2>
-            <p className="text-sm text-teal-900">{tool.groundedInInterviews}</p>
-          </section>
-        </div>
-      </SignInGate>
+      {isOpenGating ? (
+        <div className="mt-8 space-y-8">{lessonContent}</div>
+      ) : (
+        <SignInGate previewHeight="12rem">
+          <div className="mt-8 space-y-8">{lessonContent}</div>
+        </SignInGate>
+      )}
 
       <div className="mt-8 flex items-center gap-3 border-t border-stone-200 pt-6">
-        <DownloadButton toolName={tool.name} />
+        <DownloadButton toolName={tool.name} emphasize={isOpenGating} />
       </div>
     </div>
   );

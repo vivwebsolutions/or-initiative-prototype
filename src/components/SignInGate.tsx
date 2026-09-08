@@ -1,30 +1,35 @@
 "use client";
 
 import { usePreviewMode } from "@/context/preview-mode";
+import { useLoginModal } from "@/context/login-modal";
 
-export function SignInGate({ children }: { children: React.ReactNode }) {
-  const { mode, setMode } = usePreviewMode();
+export function SignInGate({
+  children,
+  previewHeight = "10rem",
+}: {
+  children: React.ReactNode;
+  previewHeight?: string;
+}) {
+  const { mode } = usePreviewMode();
+  const { openLogin } = useLoginModal();
 
   if (mode === "teacher") {
     return <>{children}</>;
   }
 
   return (
-    <div className="relative">
-      <div className="pointer-events-none select-none blur-[3px]" aria-hidden>
+    <div className="relative overflow-hidden rounded-md" style={{ maxHeight: previewHeight }}>
+      <div className="pointer-events-none select-none" aria-hidden>
         {children}
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-md bg-white/70 px-4 text-center">
+      <div className="absolute inset-x-0 bottom-0 flex h-2/3 flex-col items-center justify-end gap-2 bg-gradient-to-t from-white via-white/95 to-transparent pb-3">
         <LockIcon />
-        <p className="text-sm font-medium text-stone-700">
-          Sign in to view this resource
-        </p>
         <button
           type="button"
-          onClick={() => setMode("teacher")}
+          onClick={openLogin}
           className="rounded-md bg-teal-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-teal-700"
         >
-          Sign in as a teacher (demo)
+          Sign in to view this resource
         </button>
       </div>
     </div>

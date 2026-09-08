@@ -48,8 +48,8 @@ export function ResourceCard({ tool }: { tool: Tool }) {
         {tool.bestUsed}
       </p>
 
-      <SignInGate>
-        <p className="line-clamp-3 text-sm text-stone-600">{tool.overview}</p>
+      <SignInGate previewHeight="3.75rem">
+        <p className="text-sm text-stone-600">{tool.overview}</p>
       </SignInGate>
 
       <Link

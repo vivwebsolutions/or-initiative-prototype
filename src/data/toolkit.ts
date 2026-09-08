@@ -36,6 +36,10 @@ export type Tool = {
   overview: string;
   groundedInInterviews: string;
   competencies?: string[];
+  // "teaser" (default) fades the lesson content behind a gradient for public visitors.
+  // "open" leaves the lesson content fully readable and instead calls out the locked
+  // download button — a second gating pattern to compare against the teaser style.
+  gatingStyle?: "teaser" | "open";
 };
 
 // Order follows the PRACTICES acrostic: P R A C T I C E S
@@ -106,6 +110,7 @@ export const TOOLS: Tool[] = [
       "Prompts students to ask what background knowledge they would need before discussing an issue responsibly. Rather than rushing to take a side, students generate questions about history, stakeholders, timelines, and missing perspectives. It cultivates nuance and complexity tolerance.",
     groundedInInterviews:
       "Students expressed frustration with oversimplified narratives and a desire for deeper understanding. At the same time, many described inconsistently triangulating information within their feeds. The Context Builder supports their instinct for nuance while providing a clearer structure for responsible inquiry.",
+    gatingStyle: "open",
   },
   {
     slug: "translate",
@@ -122,6 +127,7 @@ export const TOOLS: Tool[] = [
       "Asks students to translate online comments into what they would sound like face-to-face. By explicitly comparing digital norms with in-person discourse, students notice shifts in tone, certainty, and empathy. It creates a bridge between feed culture and relational conversation.",
     groundedInInterviews:
       "Many students reported preferring in-person conversations for difficult topics and recognized differences in tone between online and offline exchanges. They described online spaces as more performative and polarized. This tool builds on that insight and makes the contrast visible and actionable.",
+    gatingStyle: "open",
   },
   {
     slug: "identity-split",

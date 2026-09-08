@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PreviewModeProvider } from "@/context/preview-mode";
+import { LoginModalProvider } from "@/context/login-modal";
 import { Header } from "@/components/Header";
+import { LoginModal } from "@/components/LoginModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +30,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-stone-50 text-stone-900">
         <PreviewModeProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <footer className="border-t border-stone-200 bg-white py-6 text-center text-xs text-stone-400">
-            Or Initiative · Chapman University · Prototype build, not for public
-            distribution
-          </footer>
+          <LoginModalProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <footer className="border-t border-stone-200 bg-white py-6 text-center text-xs text-stone-400">
+              Or Initiative · Chapman University · Prototype build, not for public
+              distribution
+            </footer>
+            <LoginModal />
+          </LoginModalProvider>
         </PreviewModeProvider>
       </body>
     </html>

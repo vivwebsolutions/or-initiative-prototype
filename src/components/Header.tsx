@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePreviewMode } from "@/context/preview-mode";
+import { useLoginModal } from "@/context/login-modal";
 
 const NAV_LINKS = [
   { href: "/resource-library", label: "Resource Library" },
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 export function Header() {
   const pathname = usePathname();
   const { mode, setMode } = usePreviewMode();
+  const { openLogin } = useLoginModal();
 
   return (
     <header className="border-b border-stone-200 bg-white">
@@ -56,7 +58,7 @@ export function Header() {
           </button>
           <button
             type="button"
-            onClick={() => setMode("teacher")}
+            onClick={() => (mode === "teacher" ? undefined : openLogin())}
             className={`rounded-full px-3 py-1.5 transition ${
               mode === "teacher" ? "bg-white text-teal-900 shadow-sm" : "text-stone-500"
             }`}
