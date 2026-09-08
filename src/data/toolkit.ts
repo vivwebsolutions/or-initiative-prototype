@@ -237,4 +237,94 @@ export const EXTERNAL_RESOURCES: ExternalResource[] = [
       "A student debate platform teachers can pair with the PRACTICES toolkit for structured, evidence-based classroom debate.",
     url: "https://www.swayed.us/",
   },
+  {
+    slug: "constructive-dialogue-high-school",
+    name: "High School Dialogue Programs",
+    organization: "Constructive Dialogue Institute",
+    resourceType: "Training",
+    description:
+      "Free workshops, a student curriculum, and a resource library that teach high schoolers and their teachers how to talk across political and social differences without shutting the conversation down.",
+    url: "https://constructivedialogue.org/solutions/high-school/teachers/",
+  },
+  {
+    slug: "facing-history-resource-library",
+    name: "Resource Library",
+    organization: "Facing History and Ourselves",
+    resourceType: "Curriculum",
+    description:
+      "A searchable library of thousands of history and civics lessons and discussion strategies that help teachers connect polarizing current events to historical context and classroom dialogue.",
+    url: "https://www.facinghistory.org/resource-library",
+  },
+  {
+    slug: "checkology",
+    name: "Checkology",
+    organization: "News Literacy Project",
+    resourceType: "Platform",
+    description:
+      "A free virtual classroom with 250+ ready-made lessons that teach grades 5-12 how to tell fact from fiction, spot bias, and evaluate news sources online.",
+    url: "https://newslit.org/educators/checkology/",
+  },
+  {
+    slug: "allsides-for-schools",
+    name: "AllSides for Schools",
+    organization: "AllSides",
+    resourceType: "Toolkit",
+    description:
+      "A free classroom package of lesson plans, a side-by-side news comparison tool, and a media bias chart that teaches students to spot slant and compare how outlets cover the same story.",
+    url: "https://www.allsides.com/schools",
+  },
+  {
+    slug: "braver-education",
+    name: "Braver Education",
+    organization: "Braver Angels",
+    resourceType: "Training",
+    description:
+      "A program of workshops, structured debates, and a free downloadable toolkit that middle and high schools use to help students practice disagreeing respectfully across political lines.",
+    url: "https://braverangels.org/braver-education/",
+  },
+  {
+    slug: "icivics-teacher-resources",
+    name: "iCivics Teacher Resources",
+    organization: "iCivics",
+    resourceType: "Platform",
+    description:
+      "A free library of civics games, lesson plans, and assignable digital-literacy activities that teach students how government and civic participation actually work, no prior knowledge needed.",
+    url: "https://ed.icivics.org/",
+  },
+  {
+    slug: "living-room-conversations-guides",
+    name: "Conversation Guides",
+    organization: "Living Room Conversations",
+    resourceType: "Guide",
+    description:
+      "Free, step-by-step scripts for structured small-group conversations on more than 150 hot-button topics, built so people who disagree can talk without it turning into a fight.",
+    url: "https://www.livingroomconversations.org/topics/",
+  },
+  {
+    slug: "ground-news",
+    name: "Ground News",
+    organization: "Ground News",
+    resourceType: "Platform",
+    description:
+      "A news app that shows how outlets across the political spectrum cover the same story side by side, useful for teaching students to notice bias, framing, and blind spots in the news they consume.",
+    url: "https://ground.news/",
+  },
+  {
+    slug: "mediawise",
+    name: "MediaWise",
+    organization: "Poynter",
+    resourceType: "Curriculum",
+    description:
+      "A free media-literacy program with fact-checking lessons and classroom-ready activities that teach students how to verify what they see online before they share it.",
+    url: "https://www.poynter.org/mediawise/",
+  },
+  {
+    slug: "listen-first-schools",
+    name: "Listen First Schools",
+    organization: "Listen First Project",
+    resourceType: "Toolkit",
+    description:
+      "A network and set of tools that help schools build a listening-first culture, giving teachers structured formats for student conversations across disagreement.",
+    url: "https://www.listenfirstproject.org/schools",
+  },
 ];
