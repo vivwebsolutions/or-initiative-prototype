@@ -1,5 +1,6 @@
 import { ARCS, type Tool } from "@/data/toolkit";
 import { PracticesTag } from "@/components/PracticesTag";
+import { PracticesStrip } from "@/components/PracticesStrip";
 import { SignInGate } from "@/components/SignInGate";
 import { DownloadButton } from "@/components/DownloadButton";
 
@@ -42,6 +43,8 @@ export function ToolDetailBody({ tool }: { tool: Tool }) {
 
   return (
     <div>
+      <PracticesStrip currentSlug={tool.slug} />
+
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-medium text-brand-teal-dark uppercase tracking-wide">

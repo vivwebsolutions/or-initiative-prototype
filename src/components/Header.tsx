@@ -1,34 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { usePreviewMode } from "@/context/preview-mode";
 import { useLoginModal } from "@/context/login-modal";
+import orInitiativeLogo from "@/assets/or-initiative-logo.webp";
 
 const NAV_LINKS = [
   { href: "/resource-library", label: "Resource Library" },
   { href: "/toolkit", label: "Toolkit Map" },
 ];
-
-function LogoMark() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <circle cx="14" cy="14" r="7" stroke="var(--brand-gold)" strokeWidth="2.5" />
-      {[0, 60, 120, 180, 240, 300].map((deg) => (
-        <rect
-          key={deg}
-          x="12.5"
-          y="0.5"
-          width="3"
-          height="6"
-          rx="1.5"
-          fill="var(--brand-gold)"
-          transform={`rotate(${deg} 14 14)`}
-        />
-      ))}
-    </svg>
-  );
-}
 
 export function Header() {
   const pathname = usePathname();
@@ -38,11 +20,13 @@ export function Header() {
   return (
     <header className="bg-brand-teal">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <LogoMark />
-          <span className="text-lg font-bold tracking-tight text-white">
-            <span className="text-brand-gold">Or</span> Initiative
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src={orInitiativeLogo}
+            alt="Or Initiative"
+            className="h-9 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="flex items-center gap-1">
