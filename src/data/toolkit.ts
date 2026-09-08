@@ -208,19 +208,31 @@ export const TOOLS: Tool[] = [
 
 export const TOOL_BY_SLUG = new Map(TOOLS.map((t) => [t.slug, t]));
 
-export type PartnerTool = {
+// The growing library of resources from OTHER organizations — not authored by
+// the Or Initiative. Each one must credit its real source org and link out.
+export type ExternalResourceType =
+  | "Platform"
+  | "Curriculum"
+  | "Toolkit"
+  | "Guide"
+  | "Training"
+  | "Article";
+
+export type ExternalResource = {
   slug: string;
   name: string;
   organization: string;
+  resourceType: ExternalResourceType;
   description: string;
   url: string;
 };
 
-export const PARTNER_TOOLS: PartnerTool[] = [
+export const EXTERNAL_RESOURCES: ExternalResource[] = [
   {
     slug: "sway-classroom",
     name: "SWAY Classroom",
     organization: "SWAY",
+    resourceType: "Platform",
     description:
       "A student debate platform teachers can pair with the PRACTICES toolkit for structured, evidence-based classroom debate.",
     url: "https://www.swayed.us/",

@@ -9,12 +9,11 @@ export default function Home() {
           Prototype
         </p>
         <h1 className="mx-auto mt-3 max-w-2xl text-4xl leading-tight font-extrabold sm:text-5xl">
-          Teacher-first. Toolkit-first. Sign-in-first.
+          Navigate polarizing topics in the classroom.
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-white/85">
-          A gated space where invited teachers sign in to access the {TOOLS.length}{" "}
-          PRACTICES pedagogical tools as PDFs, plus links to partner platforms like SWAY
-          Classroom.
+          We help middle and high school teachers do it — with {TOOLS.length} hosted
+          toolkits and a growing library of external resources on civil discourse.
         </p>
       </section>
 

@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ARCS, PARTNER_TOOLS, TOOLS, type Arc } from "@/data/toolkit";
+import { ARCS, EXTERNAL_RESOURCES, TOOLS, type Arc } from "@/data/toolkit";
 import { FilterSidebar } from "@/components/FilterSidebar";
 import { ResourceCard } from "@/components/ResourceCard";
-import { PartnerToolCard } from "@/components/PartnerToolCard";
+import { ExternalResourceCard } from "@/components/ExternalResourceCard";
 import { useResourceModal } from "@/context/resource-modal";
 
 type SortKey = "toolkit-order" | "title-asc" | "title-desc" | "duration-asc";
@@ -178,14 +178,16 @@ export default function ResourceLibraryPage() {
 
           <div className="mt-10">
             <h2 className="mb-1 text-sm font-semibold tracking-wide text-stone-500 uppercase">
-              Partner tools
+              External resources
             </h2>
             <p className="mb-4 text-sm text-stone-500">
-              External platforms invited teachers can pair with these lessons.
+              Not made by the Or Initiative — a growing library of civil discourse
+              tools, curricula, and guides from other organizations. Each one links
+              straight to its source.
             </p>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {PARTNER_TOOLS.map((tool) => (
-                <PartnerToolCard key={tool.slug} tool={tool} />
+              {EXTERNAL_RESOURCES.map((resource) => (
+                <ExternalResourceCard key={resource.slug} resource={resource} />
               ))}
             </div>
           </div>
