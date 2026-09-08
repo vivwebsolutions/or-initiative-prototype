@@ -27,7 +27,7 @@ export function SignInGate({
         <button
           type="button"
           onClick={openLogin}
-          className="rounded-md bg-teal-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-teal-700"
+          className="rounded-full bg-brand-teal-dark px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-teal"
         >
           Sign in to view this resource
         </button>

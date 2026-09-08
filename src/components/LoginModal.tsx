@@ -38,7 +38,7 @@ export function LoginModal() {
       >
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-xs font-semibold tracking-wide text-teal-700 uppercase">
+            <p className="text-xs font-semibold tracking-wide text-brand-teal-dark uppercase">
               Or Initiative
             </p>
             <h2 id="login-modal-title" className="mt-0.5 text-lg font-bold text-stone-900">

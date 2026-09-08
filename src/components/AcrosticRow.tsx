@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useResourceModal } from "@/context/resource-modal";
 
 type Props = {
   id?: string;
@@ -7,24 +9,25 @@ type Props = {
   subtitle?: string;
   tooltip: string;
   tone: "teal" | "amber";
-  href?: string;
+  slug?: string;
 };
 
 const TONE = {
   teal: {
-    tile: "bg-teal-800",
-    row: "bg-teal-50/60 hover:bg-teal-100",
-    tooltipLink: "text-teal-300",
+    tile: "bg-brand-teal-dark",
+    row: "bg-brand-teal/5 hover:bg-brand-teal/10",
+    tooltipLink: "text-brand-teal",
   },
   amber: {
-    tile: "bg-amber-500",
-    row: "bg-amber-50 hover:bg-amber-100",
-    tooltipLink: "text-amber-300",
+    tile: "bg-brand-gold-dark",
+    row: "bg-brand-gold/10 hover:bg-brand-gold/20",
+    tooltipLink: "text-brand-gold",
   },
 } as const;
 
-export function AcrosticRow({ id, letter, title, subtitle, tooltip, tone, href }: Props) {
+export function AcrosticRow({ id, letter, title, subtitle, tooltip, tone, slug }: Props) {
   const styles = TONE[tone];
+  const { openResource } = useResourceModal();
 
   const content = (
     <div
@@ -46,7 +49,7 @@ export function AcrosticRow({ id, letter, title, subtitle, tooltip, tone, href }
         className="pointer-events-none absolute top-full left-4 z-20 mt-1 w-64 rounded-md bg-stone-900 px-3 py-2 text-xs leading-snug text-white opacity-0 shadow-lg transition group-hover/row:opacity-100 group-focus-within/row:opacity-100"
       >
         {tooltip}
-        {href && (
+        {slug && (
           <span className={`mt-1 block ${styles.tooltipLink}`}>
             View lesson details →
           </span>
@@ -55,11 +58,15 @@ export function AcrosticRow({ id, letter, title, subtitle, tooltip, tone, href }
     </div>
   );
 
-  if (!href) return content;
+  if (!slug) return content;
 
   return (
-    <Link href={href} className="block focus:outline-none">
+    <button
+      type="button"
+      onClick={() => openResource(slug)}
+      className="block w-full text-left focus:outline-none"
+    >
       {content}
-    </Link>
+    </button>
   );
 }

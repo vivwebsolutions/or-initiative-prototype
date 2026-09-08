@@ -11,7 +11,7 @@ export function PracticesTag({ tool, size = "sm" }: { tool: Tool; size?: "sm" | 
       aria-label={`${tool.letter} stands for ${tool.name} in the PRACTICES toolkit — view on the toolkit map`}
     >
       <span
-        className={`${dims} flex items-center justify-center rounded-md bg-teal-800 font-bold text-white transition group-hover/tag:bg-teal-700`}
+        className={`${dims} flex items-center justify-center rounded-md bg-brand-teal-dark font-bold text-white transition group-hover/tag:bg-brand-teal`}
       >
         {tool.letter}
       </span>
@@ -23,7 +23,7 @@ export function PracticesTag({ tool, size = "sm" }: { tool: Tool; size?: "sm" | 
           {tool.letter} — {tool.name}
         </span>{" "}
         is one of the 9 PRACTICES tools.
-        <span className="mt-1 block text-teal-300">View on the toolkit map →</span>
+        <span className="mt-1 block text-brand-gold">View on the toolkit map →</span>
       </span>
     </Link>
   );

@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { PreviewModeProvider } from "@/context/preview-mode";
 import { LoginModalProvider } from "@/context/login-modal";
+import { ResourceModalProvider } from "@/context/resource-modal";
 import { Header } from "@/components/Header";
 import { LoginModal } from "@/components/LoginModal";
+import { ResourceDetailModal } from "@/components/ResourceDetailModal";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -24,20 +22,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col bg-stone-50 text-stone-900">
+    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-[var(--background)] text-stone-900">
         <PreviewModeProvider>
           <LoginModalProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <footer className="border-t border-stone-200 bg-white py-6 text-center text-xs text-stone-400">
-              Or Initiative · Chapman University · Prototype build, not for public
-              distribution
-            </footer>
-            <LoginModal />
+            <ResourceModalProvider>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <footer className="bg-brand-teal-darker py-6 text-center text-xs text-white/70">
+                Or Initiative · Chapman University · Prototype build, not for public
+                distribution
+              </footer>
+              <LoginModal />
+              <ResourceDetailModal />
+            </ResourceModalProvider>
           </LoginModalProvider>
         </PreviewModeProvider>
       </body>

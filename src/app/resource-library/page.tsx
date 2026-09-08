@@ -5,6 +5,7 @@ import { ARCS, PARTNER_TOOLS, TOOLS, type Arc } from "@/data/toolkit";
 import { FilterSidebar } from "@/components/FilterSidebar";
 import { ResourceCard } from "@/components/ResourceCard";
 import { PartnerToolCard } from "@/components/PartnerToolCard";
+import { useResourceModal } from "@/context/resource-modal";
 
 type SortKey = "toolkit-order" | "title-asc" | "title-desc" | "duration-asc";
 
@@ -25,6 +26,7 @@ export default function ResourceLibraryPage() {
   const [selectedArcs, setSelectedArcs] = useState<Set<Arc>>(new Set());
   const [sort, setSort] = useState<SortKey>("toolkit-order");
   const [view, setView] = useState<"cards" | "list">("cards");
+  const { openResource } = useResourceModal();
 
   const toggleArc = (arc: Arc) => {
     setSelectedArcs((prev) => {
@@ -68,7 +70,7 @@ export default function ResourceLibraryPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
       <div className="mb-8 max-w-3xl">
-        <p className="text-sm font-semibold tracking-wide text-teal-700 uppercase">
+        <p className="text-sm font-semibold tracking-wide text-brand-teal-dark uppercase">
           Resource Library
         </p>
         <h1 className="mt-1 text-3xl font-bold text-stone-900">
@@ -105,7 +107,7 @@ export default function ResourceLibraryPage() {
                   type="button"
                   onClick={() => setView("cards")}
                   className={`rounded px-2.5 py-1 ${
-                    view === "cards" ? "bg-teal-800 text-white" : "text-stone-600"
+                    view === "cards" ? "bg-brand-teal-dark text-white" : "text-stone-600"
                   }`}
                 >
                   Cards
@@ -114,7 +116,7 @@ export default function ResourceLibraryPage() {
                   type="button"
                   onClick={() => setView("list")}
                   className={`rounded px-2.5 py-1 ${
-                    view === "list" ? "bg-teal-800 text-white" : "text-stone-600"
+                    view === "list" ? "bg-brand-teal-dark text-white" : "text-stone-600"
                   }`}
                 >
                   List
@@ -124,7 +126,7 @@ export default function ResourceLibraryPage() {
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
-                className="rounded-md border border-stone-300 px-2 py-1.5 text-sm focus:border-teal-600 focus:outline-none"
+                className="rounded-md border border-stone-300 px-2 py-1.5 text-sm focus:border-brand-teal focus:outline-none"
               >
                 {Object.entries(SORT_LABELS).map(([key, label]) => (
                   <option key={key} value={key}>
@@ -150,23 +152,25 @@ export default function ResourceLibraryPage() {
               {filtered.map((tool) => (
                 <li key={tool.slug} className="flex items-center justify-between gap-4 px-4 py-3">
                   <div>
-                    <a
-                      href={`/resource-library/${tool.slug}`}
-                      className="font-medium text-stone-900 hover:text-teal-800 hover:underline"
+                    <button
+                      type="button"
+                      onClick={() => openResource(tool.slug)}
+                      className="text-left font-medium text-stone-900 hover:text-brand-teal-dark hover:underline"
                     >
                       {tool.letter} · {tool.name}
-                    </a>
+                    </button>
                     <p className="text-xs text-stone-500">
                       Arc {tool.arc} · {ARCS[tool.arc].label} · {tool.duration} · Grade{" "}
                       {tool.grade}
                     </p>
                   </div>
-                  <a
-                    href={`/resource-library/${tool.slug}`}
-                    className="text-sm text-teal-800 hover:underline"
+                  <button
+                    type="button"
+                    onClick={() => openResource(tool.slug)}
+                    className="text-sm text-brand-teal-dark hover:underline"
                   >
                     View →
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

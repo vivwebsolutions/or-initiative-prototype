@@ -27,8 +27,8 @@ export function DownloadButton({
         <button
           type="button"
           onClick={openLogin}
-          className={`rounded-md bg-stone-200 px-4 py-2 text-sm font-semibold text-stone-600 hover:bg-stone-300 ${
-            emphasize ? "ring-2 ring-amber-400 ring-offset-2" : ""
+          className={`rounded-full bg-stone-200 px-4 py-2 text-sm font-semibold text-stone-600 hover:bg-stone-300 ${
+            emphasize ? "ring-2 ring-brand-gold ring-offset-2" : ""
           }`}
         >
           Sign in to download PDF
@@ -41,7 +41,7 @@ export function DownloadButton({
     <button
       type="button"
       onClick={() => setClicked(true)}
-      className="rounded-md bg-teal-800 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+      className="rounded-full bg-brand-teal-dark px-4 py-2 text-sm font-semibold text-white hover:bg-brand-teal"
     >
       {clicked ? `Prototype only — no file for ${toolName} yet` : "Download lesson PDF"}
     </button>

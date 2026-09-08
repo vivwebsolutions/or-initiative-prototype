@@ -28,7 +28,7 @@ export function FilterSidebar({
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search tools…"
-          className="w-full rounded-md border border-stone-300 px-3 py-1.5 text-sm placeholder:text-stone-400 focus:border-teal-600 focus:outline-none"
+          className="w-full rounded-md border border-stone-300 px-3 py-1.5 text-sm placeholder:text-stone-400 focus:border-brand-teal focus:outline-none"
         />
       </div>
 
@@ -44,7 +44,7 @@ export function FilterSidebar({
                   type="checkbox"
                   checked={selectedArcs.has(arc)}
                   onChange={() => onToggleArc(arc)}
-                  className="mt-1 accent-teal-700"
+                  className="mt-1 accent-brand-teal-dark"
                 />
                 <span>
                   <span className="font-medium">
@@ -64,7 +64,7 @@ export function FilterSidebar({
         <button
           type="button"
           onClick={onClear}
-          className="text-xs font-medium text-teal-800 hover:underline"
+          className="text-xs font-medium text-brand-teal-dark hover:underline"
         >
           Clear filters
         </button>

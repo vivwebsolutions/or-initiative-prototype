@@ -1,19 +1,22 @@
-import Link from "next/link";
+"use client";
+
 import { ARCS, type Tool } from "@/data/toolkit";
 import { PracticesTag } from "@/components/PracticesTag";
-import { SignInGate } from "@/components/SignInGate";
+import { CardExcerpt } from "@/components/CardExcerpt";
+import { useResourceModal } from "@/context/resource-modal";
 
 export function ResourceCard({ tool }: { tool: Tool }) {
   const arc = ARCS[tool.arc];
+  const { openResource } = useResourceModal();
 
   return (
     <article className="flex flex-col gap-3 rounded-lg border border-stone-200 bg-white p-5 shadow-sm transition hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="rounded bg-stone-100 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-stone-600 uppercase">
+          <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-stone-600 uppercase">
             Tool
           </span>
-          <span className="text-[11px] font-medium text-teal-700 uppercase tracking-wide">
+          <span className="text-[11px] font-medium text-brand-teal-dark uppercase tracking-wide">
             Arc {tool.arc} · {arc.label}
           </span>
         </div>
@@ -21,12 +24,13 @@ export function ResourceCard({ tool }: { tool: Tool }) {
       </div>
 
       <div>
-        <Link
-          href={`/resource-library/${tool.slug}`}
-          className="text-lg font-semibold text-stone-900 hover:text-teal-800 hover:underline"
+        <button
+          type="button"
+          onClick={() => openResource(tool.slug)}
+          className="text-left text-lg font-semibold text-stone-900 hover:text-brand-teal-dark hover:underline"
         >
           {tool.name}
-        </Link>
+        </button>
         {tool.formerName && (
           <p className="text-xs text-stone-400 italic">formerly {tool.formerName}</p>
         )}
@@ -48,16 +52,15 @@ export function ResourceCard({ tool }: { tool: Tool }) {
         {tool.bestUsed}
       </p>
 
-      <SignInGate previewHeight="3.75rem">
-        <p className="text-sm text-stone-600">{tool.overview}</p>
-      </SignInGate>
+      <CardExcerpt text={tool.overview} />
 
-      <Link
-        href={`/resource-library/${tool.slug}`}
-        className="mt-1 text-sm font-medium text-teal-800 hover:underline"
+      <button
+        type="button"
+        onClick={() => openResource(tool.slug)}
+        className="mt-1 text-left text-sm font-medium text-brand-teal-dark hover:underline"
       >
         View lesson details →
-      </Link>
+      </button>
     </article>
   );
 }
