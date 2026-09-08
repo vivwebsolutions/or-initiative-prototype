@@ -49,7 +49,7 @@ export function CardActionBar({ onCopyLink }: { onCopyLink?: () => void }) {
           className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium hover:bg-stone-50"
         >
           <ReviewIcon />
-          Review
+          Ask
         </button>
         <span className="h-4 w-px bg-stone-200" />
         <button
